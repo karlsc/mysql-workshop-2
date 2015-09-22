@@ -1,0 +1,68 @@
+mysql> SELECT * FROM Account;
++----+--------------------+----------+---------------------+------------+
+| id | email              | password | createdOn           | modifiedOn |
++----+--------------------+----------+---------------------+------------+
+|  1 | karlysun@gmail.com | 12345    | 2015-10-22 00:00:00 | NULL       |
++----+--------------------+----------+---------------------+------------+
+1 row in set (0.01 sec)
+
+mysql> UPDATE Account SET createdOn = CURDATE(), modifiedOn = CURDATE() WHERE id=1;                                                                              
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM Account;
++----+--------------------+----------+---------------------+---------------------+
+| id | email              | password | createdOn           | modifiedOn          |
++----+--------------------+----------+---------------------+---------------------+
+|  1 | karlysun@gmail.com | 12345    | 2015-09-22 00:00:00 | 2015-09-22 00:00:00 |
++----+--------------------+----------+---------------------+---------------------+
+1 row in set (0.00 sec)
+
+
+
+mysql> SELECT * FROM AddressBook;                                                                                                                                
++----+-----------+---------+---------------------+------------+
+| id | accountId | name    | createdOn           | modifiedOn |
++----+-----------+---------+---------------------+------------+
+|  1 |         1 | Karl SC | 2015-10-22 00:00:00 | NULL       |
++----+-----------+---------+---------------------+------------+
+1 row in set (0.00 sec)
+
+mysql> UPDATE AddressBook SET createdOn = CURDATE(), name = "Karl's book", modifiedOn = CURDATE() WHERE id=1;                                                    
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM AddressBook;
++----+-----------+-------------+---------------------+---------------------+
+| id | accountId | name        | createdOn           | modifiedOn          |
++----+-----------+-------------+---------------------+---------------------+
+|  1 |         1 | Karl's book | 2015-09-22 00:00:00 | 2015-09-22 00:00:00 |
++----+-----------+-------------+---------------------+---------------------+
+1 row in set (0.00 sec)
+
+
+
+
+mysql> SELECT * FROM Entry;                                                                                                                                      
++----+---------------+-----------+------------------+---------------------+------+---------+---------------------------------------+----------------+------------------+-----------------+-----------------+
+| id | addressBookId | firstName | lastName         | birthday            | type | subtype | contentLineOne                        | contentLineTwo | contentLineThree | contentLineFour | contentLineFive |
++----+---------------+-----------+------------------+---------------------+------+---------+---------------------------------------+----------------+------------------+-----------------+-----------------+
+|  1 |             1 | Sylvain   | Crepeau          | 1961-02-17 00:00:00 | home | phone   | 514 514 5141                          | NULL           | NULL             | NULL            | NULL            |
+|  2 |             1 | Lyne      | Souliere         | 1963-04-29 00:00:00 | home | email   | abc@abcde.net                         | NULL           | NULL             | NULL            | NULL            |
+|  3 |             1 | Roxanne   | Souliere-Crepeau | 1990-09-10 00:00:00 | work | address | 1234 Albert str. Satanaka, Qc, Canada | NULL           | NULL             | NULL            | NULL            |
++----+---------------+-----------+------------------+---------------------+------+---------+---------------------------------------+----------------+------------------+-----------------+-----------------+
+3 rows in set (0.00 sec)
+
+mysql> UPDATE Entry SET contentLineTwo = "Updated" WHERE addressBookId=1;                                                                        
+Query OK, 3 rows affected (0.00 sec)
+Rows matched: 3  Changed: 3  Warnings: 0
+
+mysql> SELECT * FROM Entry;
++----+---------------+-----------+------------------+---------------------+------+---------+---------------------------------------+----------------+------------------+-----------------+-----------------+
+| id | addressBookId | firstName | lastName         | birthday            | type | subtype | contentLineOne                        | contentLineTwo | contentLineThree | contentLineFour | contentLineFive |
++----+---------------+-----------+------------------+---------------------+------+---------+---------------------------------------+----------------+------------------+-----------------+-----------------+
+|  1 |             1 | Sylvain   | Crepeau          | 1961-02-17 00:00:00 | home | phone   | 514 514 5141                          | Updated        | NULL             | NULL            | NULL            |
+|  2 |             1 | Lyne      | Souliere         | 1963-04-29 00:00:00 | home | email   | abc@abcde.net                         | Updated        | NULL             | NULL            | NULL            |
+|  3 |             1 | Roxanne   | Souliere-Crepeau | 1990-09-10 00:00:00 | work | address | 1234 Albert str. Satanaka, Qc, Canada | Updated        | NULL             | NULL            | NULL            |
++----+---------------+-----------+------------------+---------------------+------+---------+---------------------------------------+----------------+------------------+-----------------+-----------------+
+3 rows in set (0.00 sec)
