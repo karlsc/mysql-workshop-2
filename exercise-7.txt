@@ -1,0 +1,55 @@
+mysql> source data/import-table-structure.sql
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Database changed
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> SHOW DATABASES;
++------------------------------+
+| Database                     |
++------------------------------+
+| information_schema           |
+| c9                           |
+| decodemtl_addressbook        |
+| decodemtl_addressbook_import |
+| mysql                        |
+| performance_schema           |
++------------------------------+
+6 rows in set (0.00 sec)
+
+
+
+mysql> source data/import-account.sql
+
+mysql> SELECT * FROM Account;
+
+1000 rows in set (0.00 sec)
+
+
+
+mysql> source data/import-addressbook.sql
+
+mysql> SELECT * FROM AddressBook;
+
+1100 rows in set (0.00 sec)
+
+
+
+
+mysql> source data/import-entry.sql
+
+mysql> SELECT * FROM Entry;
+
+4000 rows in set (0.01 sec)
