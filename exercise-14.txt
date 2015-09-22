@@ -1,0 +1,176 @@
+mysql> CREATE DATABASE Store;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> USE Store;
+Database changed
+
+mysql> CREATE TABLE Items ( id int NOT NULL AUTO_INCREMENT, PRIMARY KEY (id) );
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> ALTER TABLE Items ADD COLUMN description VARCHAR(255);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE Items ADD COLUMN price INT;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE Items ADD COLUMN brand VARCHAR(255);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> CREATE TABLE Inventory ( id int NOT NULL AUTO_INCREMENT, PRIMARY KEY (id) );
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> ALTER TABLE Inventory ADD COLUMN itemsId INT;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE Inventory ADD COLUMN inStock INT;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE Inventory ADD COLUMN date DATETIME;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> CREATE TABLE Customers ( id int NOT NULL AUTO_INCREMENT, PRIMARY KEY (id) );
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> ALTER TABLE Customers ADD COLUMN name VARCHAR(255);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE Customers ADD COLUMN country VARCHAR(255);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> CREATE TABLE Sales ( id int NOT NULL AUTO_INCREMENT, PRIMARY KEY (id) );
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> ALTER TABLE Sales ADD COLUMN customersId INT;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE Sales ADD COLUMN itemsId INT;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE Sales ADD COLUMN ammountSold INT;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE Sales ADD COLUMN totalPrice INT;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE Sales ADD COLUMN dateOfSale DATETIME;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> CREATE TABLE Refunds ( id int NOT NULL AUTO_INCREMENT, PRIMARY KEY (id) );
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> ALTER TABLE Refunds ADD COLUMN customersId INT;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE Refunds ADD COLUMN itemsId INT;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE Refunds ADD COLUMN ammountReturned INT;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE Refunds ADD COLUMN totalRefunded INT;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE Refunds ADD COLUMN dateOfRefund DATETIME;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> CREATE TABLE Restocks ( id int NOT NULL AUTO_INCREMENT, PRIMARY KEY (id) );
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> ALTER TABLE Restocks ADD COLUMN itemsId INT;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE Restocks ADD COLUMN ammountReceived INT;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE Restocks ADD COLUMN dateReceived DATETIME;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe Items;                                                                                                           
++-------------+--------------+------+-----+---------+----------------+
+| Field       | Type         | Null | Key | Default | Extra          |
++-------------+--------------+------+-----+---------+----------------+
+| id          | int(11)      | NO   | PRI | NULL    | auto_increment |
+| description | varchar(255) | YES  |     | NULL    |                |
+| price       | int(11)      | YES  |     | NULL    |                |
+| brand       | varchar(255) | YES  |     | NULL    |                |
++-------------+--------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> DESCRIBE Inventory;
++---------+----------+------+-----+---------+----------------+
+| Field   | Type     | Null | Key | Default | Extra          |
++---------+----------+------+-----+---------+----------------+
+| id      | int(11)  | NO   | PRI | NULL    | auto_increment |
+| itemsId | int(11)  | YES  |     | NULL    |                |
+| inStock | int(11)  | YES  |     | NULL    |                |
+| date    | datetime | YES  |     | NULL    |                |
++---------+----------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> DESCRIBE Customers;
++---------+--------------+------+-----+---------+----------------+
+| Field   | Type         | Null | Key | Default | Extra          |
++---------+--------------+------+-----+---------+----------------+
+| id      | int(11)      | NO   | PRI | NULL    | auto_increment |
+| name    | varchar(255) | YES  |     | NULL    |                |
+| country | varchar(255) | YES  |     | NULL    |                |
++---------+--------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> DESCRIBE Sales;
++-------------+----------+------+-----+---------+----------------+
+| Field       | Type     | Null | Key | Default | Extra          |
++-------------+----------+------+-----+---------+----------------+
+| id          | int(11)  | NO   | PRI | NULL    | auto_increment |
+| customersId | int(11)  | YES  |     | NULL    |                |
+| itemsId     | int(11)  | YES  |     | NULL    |                |
+| ammountSold | int(11)  | YES  |     | NULL    |                |
+| totalPrice  | int(11)  | YES  |     | NULL    |                |
+| dateOfSale  | datetime | YES  |     | NULL    |                |
++-------------+----------+------+-----+---------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> DESCRIBE Refunds;
++-----------------+----------+------+-----+---------+----------------+
+| Field           | Type     | Null | Key | Default | Extra          |
++-----------------+----------+------+-----+---------+----------------+
+| id              | int(11)  | NO   | PRI | NULL    | auto_increment |
+| customersId     | int(11)  | YES  |     | NULL    |                |
+| itemsId         | int(11)  | YES  |     | NULL    |                |
+| ammountReturned | int(11)  | YES  |     | NULL    |                |
+| totalRefunded   | int(11)  | YES  |     | NULL    |                |
+| dateOfRefund    | datetime | YES  |     | NULL    |                |
++-----------------+----------+------+-----+---------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> DESCRIBE Restocks;
++-----------------+----------+------+-----+---------+----------------+
+| Field           | Type     | Null | Key | Default | Extra          |
++-----------------+----------+------+-----+---------+----------------+
+| id              | int(11)  | NO   | PRI | NULL    | auto_increment |
+| itemsId         | int(11)  | YES  |     | NULL    |                |
+| ammountReceived | int(11)  | YES  |     | NULL    |                |
+| dateReceived    | datetime | YES  |     | NULL    |                |
++-----------------+----------+------+-----+---------+----------------+
+4 rows in set (0.01 sec)
