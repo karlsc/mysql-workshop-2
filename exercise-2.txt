@@ -1,0 +1,53 @@
+mysql> INSERT INTO Account (email, password, createdOn) VALUES("karlysun@gmail.com", "12345", "2015-10-22");                                                 
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT COUNT(*) FROM Account;
++----------+
+| COUNT(*) |
++----------+
+|        1 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM Account;
++----+--------------------+----------+---------------------+------------+
+| id | email              | password | createdOn           | modifiedOn |
++----+--------------------+----------+---------------------+------------+
+|  1 | karlysun@gmail.com | 12345    | 2015-10-22 00:00:00 | NULL       |
++----+--------------------+----------+---------------------+------------+
+1 row in set (0.00 sec)
+
+
+
+
+mysql> INSERT INTO AddressBook (accountId, name, createdOn) VALUES("1", "Karl SC", "2015-10-22");                                                                
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM AddressBook;
++----+-----------+---------+---------------------+------------+
+| id | accountId | name    | createdOn           | modifiedOn |
++----+-----------+---------+---------------------+------------+
+|  1 |         1 | Karl SC | 2015-10-22 00:00:00 | NULL       |
++----+-----------+---------+---------------------+------------+
+1 row in set (0.00 sec)
+
+
+
+
+mysql> INSERT INTO Entry (addressBookId, firstName, lastName, birthday, type, subtype, contentLineOne) VALUES("1", "Sylvain", "Crepeau", "1961-02-17", "home", "phone", "514 514 5141");                                                                                                                                          
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Entry (addressBookId, firstName, lastName, birthday, type, subtype, contentLineOne) VALUES("1", "Lyne", "Souliere", "1963-04-29", "home", "email", "abc@abcde.net");                                                                                                                                           
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Entry (addressBookId, firstName, lastName, birthday, type, subtype, contentLineOne) VALUES("1", "Roxanne", "Souliere-Crepeau", "1990-09-10", "work", "address", "1234 Albert str. Satanaka, Qc, Canada");                                                                                                   
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SELECT * FROM Entry;+----+---------------+-----------+------------------+---------------------+------+---------+---------------------------------------+----------------+------------------+-----------------+-----------------+
+| id | addressBookId | firstName | lastName         | birthday            | type | subtype | contentLineOne                        | contentLineTwo | contentLineThree | contentLineFour | contentLineFive |
++----+---------------+-----------+------------------+---------------------+------+---------+---------------------------------------+----------------+------------------+-----------------+-----------------+
+|  1 |             1 | Sylvain   | Crepeau          | 1961-02-17 00:00:00 | home | phone   | 514 514 5141                          | NULL           | NULL             | NULL            | NULL            |
+|  2 |             1 | Lyne      | Souliere         | 1963-04-29 00:00:00 | home | email   | abc@abcde.net                         | NULL           | NULL             | NULL            | NULL            |
+|  3 |             1 | Roxanne   | Souliere-Crepeau | 1990-09-10 00:00:00 | work | address | 1234 Albert str. Satanaka, Qc, Canada | NULL           | NULL             | NULL            | NULL            |
++----+---------------+-----------+------------------+---------------------+------+---------+---------------------------------------+----------------+------------------+-----------------+-----------------+
+3 rows in set (0.00 sec)
